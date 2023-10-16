@@ -16,9 +16,7 @@ fetch(url, options)
 
 /* GET users listing. */
 router.get("/", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.json({title: "respond with a resource 1", data: dataWishlist});
+  res.send({title: "respond with a resource 1", data: dataWishlist});
 });
 
 module.exports = router;
