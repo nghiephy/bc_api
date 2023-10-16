@@ -13,6 +13,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var cors = require('cors')
 
 // App Routes ============================================
 var auth = require("./routes/auth");
@@ -35,6 +36,8 @@ app.use("/auth", auth);
 app.use("/load", load);
 app.use("/uninstall", uninstall);
 // ========================================================
+
+app.use(cors())
 
 var listener = app.listen(3000, function() {
   console.log("Listening on port " + listener.address().port);
