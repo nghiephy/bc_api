@@ -21,6 +21,17 @@ var load = require("./routes/load");
 var uninstall = require("./routes/uninstall");
 // ========================================================
 
+var app = express();
+
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, "public")));
+app.set("views", __dirname + "/views");
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
+
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
@@ -39,16 +50,6 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
-
-var app = express();
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
-app.set("views", __dirname + "/views");
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
 
 // App Routes ============================================+
 app.use("/auth", auth);
