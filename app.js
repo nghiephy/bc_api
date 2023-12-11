@@ -19,6 +19,7 @@ var cors = require('cors')
 var auth = require("./routes/auth");
 var load = require("./routes/load");
 var uninstall = require("./routes/uninstall");
+var score = require("./routes/score");
 // ========================================================
 
 var app = express();
@@ -55,6 +56,7 @@ app.use(function (req, res, next) {
 app.use("/auth", auth);
 app.use("/load", load);
 app.use("/uninstall", uninstall);
+app.use("/score", score);
 // ========================================================
 
 app.use(cors())
