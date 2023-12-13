@@ -52,7 +52,6 @@ router.get("/", function (req, res, next) {
 // Add new score
 router.post("/add", function (req, res, next) {
   const reqData = req.body;
-  
   fs.readFile("public/assets/data/score.json", (error, data) => {
     if (error) {
       console.error(error);
